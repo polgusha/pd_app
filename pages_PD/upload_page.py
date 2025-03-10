@@ -5,9 +5,7 @@ import os
 
 def upload_files(key):
     uploaded_files = st.sidebar.file_uploader(
-        "Выберите видео для обработки", type=["mp4", "MOV", "mov"], accept_multiple_files=True, key=key)
-    if uploaded_files:
-        st.markdown(f"_Выбрано файлов: {len(uploaded_files)}_")
+        "Выберите видео для обработки", type=["mp4", "MOV", "mov"], accept_multiple_files=False, key=key)
 
     return uploaded_files
 
@@ -40,17 +38,18 @@ def process_MP(video_file):
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
+        image = cv2.resize(image, (600, 400))
         # Отображение обработанного изображения в Streamlit
         stframe.image(image, channels="BGR", use_column_width=True)
 
     cap.release()
 
+
 def PD_process(config):
     uploaded_files = upload_files('PD_process')
     if uploaded_files:
         with open("temp_video.mp4", "wb") as f:
-            f.write(uploaded_files[0].getbuffer())
+            f.write(uploaded_files.getbuffer())
         process_MP("temp_video.mp4")
     if os.path.exists("temp_video.mp4"):
     
