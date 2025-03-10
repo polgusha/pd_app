@@ -1,0 +1,15 @@
+/test
+**/__pycache__/ 
+**.zip
+.ipynb_checkpoints
+/images_test
+test_model
+инструкция к докеру.txt
+temp*
+images_out
+**.png
+**.jpeg
+**.jpg
+**.ipynb
+craft_mlt_25k.pth
+myenv*

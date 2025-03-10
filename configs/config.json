@@ -1,0 +1,9 @@
+{
+    "yolo_concatenation_path": "models/model_2_class.pt",
+    "yolo_segmentation_path": "models/best_yolo_kay_1208(for_segmentation).pt",
+    "unet_path": "models/200824_dice_batch16.pt",
+    "conf": 0.4,
+    "iou": 0.3,
+    "step_in_prompt": ","
+    
+}
