@@ -4,10 +4,9 @@ FROM python:3.11-slim
 RUN rm -f /etc/apt/sources.list
 
 # Используем российские зеркала для Debian
-RUN echo "deb http://mirror.yandex.ru/debian bookworm main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://mirror.yandex.ru/debian-security bookworm-security main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://mirror.yandex.ru/debian bookworm-updates main contrib non-free" >> /etc/apt/sources.list
-
+RUN echo "deb http://mirror.selectel.ru/debian bookworm main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://mirror.selectel.ru/debian-security bookworm-security main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://mirror.selectel.ru/debian bookworm-updates main contrib non-free" >> /etc/apt/sources.list
 # Обновляем пакеты и устанавливаем необходимые зависимости
 RUN apt-get update && apt-get install -y \
     build-essential \
