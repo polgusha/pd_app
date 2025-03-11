@@ -1,15 +1,11 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
-# Обновляем список источников и устанавливаем необходимые пакеты
-RUN echo "deb http://deb.debian.org/debian bookworm main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://deb.debian.org/debian-security bookworm-security main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://deb.debian.org/debian bookworm-updates main contrib non-free" >> /etc/apt/sources.list && \
+RUN echo 'deb http://mirror.yandex.ru/debian/ bookworm main contrib non-free non-free-firmware deb-src http://mirror.yandex.ru/debian/ bookworm main contrib non-free non-free-firmware deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware deb http://mirror.yandex.ru/debian/ bookworm-updates main contrib non-free non-free-firmware deb-src http://mirror.yandex.ru/debian/ bookworm-updates main contrib non-free non-free-firmware' /etc/apt/sources.list && \
     apt-get update && apt-get install -y \
     build-essential \
     curl \
     software-properties-common \
     libgl1-mesa-glx \
-    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
