@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ```
 4. Запустите streamlit сервер:
 ```
-streamlit run main.py
+streamlit run app.py
 ```
 Для запуска веб-приложения надо перейти по адресу http://localhost:8501
 
